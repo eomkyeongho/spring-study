@@ -10,7 +10,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class BeanDefinitionTest {
 
-    GenericXmlApplicationContext ac = new GenericXmlApplicationContext("appConfig.xml");
+    GenericXmlApplicationContext ac = new GenericXmlApplicationContext(AppConfig.class);
     
     @Test
     @DisplayName("빈 설정 메타정보 확인")
