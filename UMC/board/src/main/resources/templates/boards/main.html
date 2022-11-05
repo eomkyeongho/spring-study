@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns xmlns:th="http://www.w3.org/1999/xhtml" : th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Board</title>
+</head>
+<body>
+<div class="container">
+    <table class="table table-hover mt-3">
+        <thead class="table-primary">
+        <th>글번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>조회수</th>
+        </thead>
+        <tr th:each="list :${list}">
+            <td>[[${list.boardId}]]</td>
+            <td>
+                <a th:href="@{/board/view(boardId=${list.boardId})}">[[${list.title}]]</a>
+            </td>
+            <td>[[${list.name}]]</td>
+            <td>[[${list.read}]]</td>
+        </tr>
+    </table>
+    <a th:href="@{/board/upload}"><button class="btn btn-primary">새 게시글 작성</button></a>
+</div>
+</body>
+</html>
