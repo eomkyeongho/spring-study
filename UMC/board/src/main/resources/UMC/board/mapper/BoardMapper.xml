@@ -24,4 +24,22 @@
         VALUES
         (#{title}, #{content}, #{name});
     </insert>
+
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE
+        FROM tbl_board
+        WHERE boardId=#{boardId};
+    </delete>
+
+    <update id="updateBoard" parameterType="UMC.board.domain.Board">
+        UPDATE tbl_board
+        SET content=#{content}, title=#{title}, read=read-1
+        WHERE boardId=#{boardId}
+    </update>
+
+    <update id="increaseRead" parameterType="Long">
+        UPDATE tbl_board
+        SET read=read+1
+        WHERE boardId=#{boardId}
+    </update>
 </mapper>
