@@ -1,11 +1,9 @@
 package com.Board.BoardAPI.controller;
 
+import com.Board.BoardAPI.domain.Board;
 import com.Board.BoardAPI.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("board")
@@ -14,8 +12,10 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping("/newboard")
-    public String createBoard(){
+    @PostMapping("/create")
+    public String createBoard(@RequestBody Board board){
+        //boardService.createBoard(board);
 
+        return "Done";
     }
 }
