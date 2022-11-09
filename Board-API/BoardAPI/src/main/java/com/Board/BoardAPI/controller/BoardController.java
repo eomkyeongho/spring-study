@@ -5,6 +5,8 @@ import com.Board.BoardAPI.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("board")
 @RequiredArgsConstructor
@@ -19,9 +21,14 @@ public class BoardController {
         return "Done";
     }
 
-    @GetMapping("/read")
-    public Board getBoard(Long boardId) {
+    @GetMapping("/read/{boardId}")
+    public Board getBoard(@PathVariable Long boardId) {
         return boardService.getBoard(boardId);
+    }
+
+    @GetMapping("/list")
+    public List<Board> getBoardList(Long page) {
+        return boardService.getBoardList(page);
     }
 
     @PostMapping("/update")

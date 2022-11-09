@@ -5,6 +5,8 @@ import com.Board.BoardAPI.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -15,6 +17,9 @@ public class BoardService {
         boardMapper.createBoard(board);
     }
 
+    public List<Board> getBoardList(Long page) {
+        return boardMapper.getBoardList(page);
+    }
     public Board getBoard(Long boardId) {
         return boardMapper.getBoard(boardId);
     }

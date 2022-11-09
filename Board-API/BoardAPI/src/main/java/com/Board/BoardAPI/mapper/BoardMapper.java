@@ -4,6 +4,8 @@ import com.Board.BoardAPI.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BoardMapper {
     void createBoard(Board board);
@@ -13,4 +15,6 @@ public interface BoardMapper {
     void updateBoard(Board board);
 
     void deleteBoard(Long boardId);
+
+    List<Board> getBoardList(Long page);
 }
