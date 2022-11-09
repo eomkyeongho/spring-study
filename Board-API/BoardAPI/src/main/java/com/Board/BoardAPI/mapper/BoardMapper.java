@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BoardMapper {
     void createBoard(Board board);
+
+    Board getBoard(Long boardId);
 }

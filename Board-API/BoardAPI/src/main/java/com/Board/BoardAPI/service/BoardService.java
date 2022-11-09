@@ -12,6 +12,10 @@ public class BoardService {
     private final BoardMapper boardMapper;
 
     public void createBoard(Board board) {
-        //boardMapper.createBoard(board);
+        boardMapper.createBoard(board);
+    }
+
+    public Board getBoard(Long boardId) {
+        return boardMapper.getBoard(boardId);
     }
 }

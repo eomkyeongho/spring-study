@@ -14,8 +14,13 @@ public class BoardController {
 
     @PostMapping("/create")
     public String createBoard(@RequestBody Board board){
-        //boardService.createBoard(board);
+        boardService.createBoard(board);
 
         return "Done";
+    }
+
+    @GetMapping("/read")
+    public Board getBoard(Long boardId) {
+        return boardService.getBoard(boardId);
     }
 }

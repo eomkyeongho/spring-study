@@ -1,7 +1,0 @@
-<mapper namespace = "com.Board.BoardAPI.mapper.BoardMapper">
-    <insert id="createBoard" parameterType="com.Board.BoardAPI.domain.Board">
-        INSERT INTO tbl_board (title, writer, content)
-        VALUES
-        (#{title}, #{writer}, #{content});
-    </insert>
-</mapper>
