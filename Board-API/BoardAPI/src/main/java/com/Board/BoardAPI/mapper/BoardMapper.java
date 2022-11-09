@@ -9,4 +9,8 @@ public interface BoardMapper {
     void createBoard(Board board);
 
     Board getBoard(Long boardId);
+
+    void updateBoard(Board board);
+
+    void deleteBoard(Long boardId);
 }

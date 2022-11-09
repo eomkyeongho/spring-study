@@ -14,4 +14,16 @@
         FROM tbl_board
         WHERE boardId=#{boardId}
     </select>
+
+    <update id="updateBoard" parameterType="com.Board.BoardAPI.domain.Board">
+        UPDATE tbl_board
+        SET title=#{title}, content=#{content}
+        WHERE boardId=#{boardId}
+    </update>
+
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE
+        FROM tbl_board
+        WHERE boardId=#{boardId}
+    </delete>
 </mapper>

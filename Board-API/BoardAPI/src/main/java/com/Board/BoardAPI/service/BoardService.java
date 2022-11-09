@@ -18,4 +18,12 @@ public class BoardService {
     public Board getBoard(Long boardId) {
         return boardMapper.getBoard(boardId);
     }
+
+    public void updateBoard(Board board) {
+        boardMapper.updateBoard(board);
+    }
+
+    public void deleteBoard(Long boardId) {
+        boardMapper.deleteBoard(boardId);
+    }
 }

@@ -23,4 +23,18 @@ public class BoardController {
     public Board getBoard(Long boardId) {
         return boardService.getBoard(boardId);
     }
+
+    @PostMapping("/update")
+    public String updateBoard(@RequestBody Board board) {
+        boardService.updateBoard(board);
+
+        return "Done";
+    }
+
+    @GetMapping("/delete")
+    public String deleteBoard(Long boardId) {
+        boardService.deleteBoard(boardId);
+
+        return "Done";
+    }
 }
