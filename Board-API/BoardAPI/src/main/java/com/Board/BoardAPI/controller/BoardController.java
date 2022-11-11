@@ -23,7 +23,7 @@ public class BoardController {
     public String createBoard(@RequestBody Board board){
         boardService.createBoard(board);
 
-        return "Done";
+        return "Create Board Done";
     }
 
     @GetMapping("/post/detail/{boardId}")
@@ -35,13 +35,13 @@ public class BoardController {
     public String updateBoard(@RequestBody Board board) {
         boardService.updateBoard(board);
 
-        return "Done";
+        return "Update Board Done";
     }
 
     @DeleteMapping("/post/detail/{boardId}")
-    public String deleteBoard(Long boardId) {
+    public String deleteBoard(@PathVariable Long boardId) {
         boardService.deleteBoard(boardId);
 
-        return "Done";
+        return "Delete Board Done";
     }
 }
