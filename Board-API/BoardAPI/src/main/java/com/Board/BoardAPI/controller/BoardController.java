@@ -14,31 +14,31 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping("/create")
+    @GetMapping("/list")
+    public List<Board> getBoardList(Long page) {
+        return boardService.getBoardList(page);
+    }
+
+    @PostMapping("/post")
     public String createBoard(@RequestBody Board board){
         boardService.createBoard(board);
 
         return "Done";
     }
 
-    @GetMapping("/read/{boardId}")
+    @GetMapping("/post/detail/{boardId}")
     public Board getBoard(@PathVariable Long boardId) {
         return boardService.getBoard(boardId);
     }
 
-    @GetMapping("/list")
-    public List<Board> getBoardList(Long page) {
-        return boardService.getBoardList(page);
-    }
-
-    @PostMapping("/update")
+    @PutMapping("/post/detail/{boardId}")
     public String updateBoard(@RequestBody Board board) {
         boardService.updateBoard(board);
 
         return "Done";
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/post/detail/{boardId}")
     public String deleteBoard(Long boardId) {
         boardService.deleteBoard(boardId);
 
