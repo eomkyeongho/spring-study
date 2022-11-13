@@ -14,34 +14,35 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/list")
+    @GetMapping("/posts")
     public List<Board> getBoardList(Long page) {
-        return boardService.getBoardList(page);
+        if(page == null) page = 1L;
+        return boardService.getBoardList((page-1) * 5);
     }
 
-    @PostMapping("/post")
+    @PostMapping("/posts")
     public String createBoard(@RequestBody Board board){
         boardService.createBoard(board);
 
-        return "Create Board Done";
+        return "게시 글 작성 완료";
     }
 
-    @GetMapping("/post/detail/{boardId}")
+    @GetMapping("/posts/{boardId}")
     public Board getBoard(@PathVariable Long boardId) {
         return boardService.getBoard(boardId);
     }
 
-    @PutMapping("/post/detail/{boardId}")
+    @PutMapping("/posts/{boardId}")
     public String updateBoard(@RequestBody Board board) {
         boardService.updateBoard(board);
 
-        return "Update Board Done";
+        return "게시 글 수정 완료";
     }
 
-    @DeleteMapping("/post/detail/{boardId}")
+    @DeleteMapping("/posts/{boardId}")
     public String deleteBoard(@PathVariable Long boardId) {
         boardService.deleteBoard(boardId);
 
-        return "Delete Board Done";
+        return "게시 글 삭제 완료";
     }
 }

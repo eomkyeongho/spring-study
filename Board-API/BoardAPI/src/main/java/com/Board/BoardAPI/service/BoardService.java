@@ -17,8 +17,8 @@ public class BoardService {
         boardMapper.createBoard(board);
     }
 
-    public List<Board> getBoardList(Long page) {
-        return boardMapper.getBoardList(page);
+    public List<Board> getBoardList(Long startNum) {
+        return boardMapper.getBoardList(startNum);
     }
     public Board getBoard(Long boardId) {
         return boardMapper.getBoard(boardId);

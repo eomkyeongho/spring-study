@@ -9,9 +9,7 @@
     </insert>
 
     <select id="getBoardList" parameterType="Long" resultType="com.Board.BoardAPI.domain.Board">
-        SELECT boardId, title, writer, content
-        FROM (SELECT ROWNUM AS NUM, tbl_board.* FROM tbl_board)
-        WHERE NUM between (5*(#{page}-1)+1) and 5*#{page}
+        SELECT * FROM tbl_board LIMIT #{startNum}, 5
     </select>
 
     <select id="getBoard" parameterType="Long" resultType="com.Board.BoardAPI.domain.Board">

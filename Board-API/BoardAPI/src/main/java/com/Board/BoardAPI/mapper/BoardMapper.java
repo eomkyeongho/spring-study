@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Mapper
 public interface BoardMapper {
     void createBoard(Board board);
 
@@ -16,5 +16,5 @@ public interface BoardMapper {
 
     void deleteBoard(Long boardId);
 
-    List<Board> getBoardList(Long page);
+    List<Board> getBoardList(Long startNum);
 }
