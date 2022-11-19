@@ -9,7 +9,10 @@
     </insert>
 
     <select id="getBoardList" parameterType="Long" resultType="com.Board.BoardAPI.domain.Board">
-        SELECT * FROM tbl_board LIMIT #{startNum}, 5
+        SELECT
+        boardId, title, writer
+        FROM tbl_board
+        LIMIT #{startNum}, 5
     </select>
 
     <select id="getBoard" parameterType="Long" resultType="com.Board.BoardAPI.domain.Board">

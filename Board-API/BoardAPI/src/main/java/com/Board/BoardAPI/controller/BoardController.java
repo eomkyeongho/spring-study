@@ -1,7 +1,10 @@
 package com.Board.BoardAPI.controller;
 
 import com.Board.BoardAPI.domain.Board;
+import com.Board.BoardAPI.domain.User;
+import com.Board.BoardAPI.security.JwtTokenProvider;
 import com.Board.BoardAPI.service.BoardService;
+import com.Board.BoardAPI.service.BoardUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,26 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardUserService boardUserService;
+    private final JwtTokenProvider jwtTokenProvider;
+
+    @PostMapping("/users")
+    public String createUser(@RequestBody User user) {
+        boardUserService.createUser(user);
+
+        return "사용자 등록 완료";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        boolean result = boardUserService.login(user);
+
+        if(result == true) {
+            return jwtTokenProvider.createToken(user.getUserId());
+        } else {
+            return "로그인 실패";
+        }
+    }
 
     @GetMapping("/posts")
     public List<Board> getBoardList(Long page) {

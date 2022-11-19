@@ -1,6 +1,7 @@
 package com.Board.BoardAPI.service;
 
 import com.Board.BoardAPI.domain.Board;
+import com.Board.BoardAPI.domain.User;
 import com.Board.BoardAPI.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
