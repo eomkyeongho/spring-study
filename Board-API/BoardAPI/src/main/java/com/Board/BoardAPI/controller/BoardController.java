@@ -33,7 +33,8 @@ public class BoardController {
     }
 
     @PutMapping("/posts/{boardId}")
-    public String updateBoard(@RequestBody Board board) {
+    public String updateBoard(@RequestBody Board board, @PathVariable Long boardId) {
+        board.setBoardId(boardId);
         boardService.updateBoard(board);
 
         return "게시 글 수정 완료";
