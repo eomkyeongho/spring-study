@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a97563d4-3a36-4a2c-bbcb-d605ceec04f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Board-API/BoardAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Board-API/BoardAPI/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/src/main/java/UMC/board/BoardApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/board/src/main/java/UMC/board/BoardApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/rudgh/OneDrive/바탕 화면/Github/spring_study/Board-API/BoardAPI",
+    "last_opened_file_path": "D:/Github/spring_study/UMC",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
