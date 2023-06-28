@@ -1,6 +1,8 @@
 package com.cos.security1.auth;
 
 import com.cos.security1.domain.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,10 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Getter @Setter
 public class PrincipalDetails implements UserDetails {
     private User user;
 
-    public PrincipalDetails(com.cos.security1.domain.User user) {
+    public PrincipalDetails(User user) {
         this.user = user;
     }
 
