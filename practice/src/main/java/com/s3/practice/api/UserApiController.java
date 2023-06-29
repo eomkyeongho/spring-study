@@ -4,9 +4,7 @@ import com.s3.practice.domain.User;
 import com.s3.practice.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,7 +20,15 @@ public class UserApiController {
         user.setUsername(request.getName());
 
         Long id = userService.join(user);
+
         return new CreateUserResponse(id);
+    }
+
+    @GetMapping("/api/v1/users/{userId}")
+    public RetrieveUserResponse retrieveUser(@PathVariable("userId") Long userId) {
+        User user = userService.findOne(userId);
+
+        return new RetrieveUserResponse(user.getId(), user.getUsername(), user.getEmail());
     }
 
     @Data
@@ -36,6 +42,19 @@ public class UserApiController {
 
         public CreateUserResponse(Long id) {
             this.id = id;
+        }
+    }
+
+    @Data
+    static class RetrieveUserResponse {
+        private Long id;
+        private String name;
+        private String email;
+
+        public RetrieveUserResponse(Long id, String name, String email) {
+            this.id = id;
+            this.name = name;
+            this.email = email;
         }
     }
 }
