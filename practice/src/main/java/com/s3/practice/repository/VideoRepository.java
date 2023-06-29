@@ -2,45 +2,39 @@ package com.s3.practice.repository;
 
 import com.s3.practice.domain.Video;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
 public class VideoRepository {
 
-    private final EntityManager em;
+    private final VideoJpaRepository videoJpaRepository;
 
-    public Long save(Video video) {
-        em.persist(video);
-        return video.getId();
+    public void save(Video video) {
+        videoJpaRepository.save(video);
     }
 
-    public Long delete(Video video) {
-        em.remove(video);
-        return video.getId();
+    public void delete(Video video) {
+        videoJpaRepository.delete(video);
     }
 
-    public Video findOne(Long id) {
-        return em.find(Video.class, id);
+    public Optional<Video> findOne(Long id) {
+        return videoJpaRepository.findById(id);
     }
 
     public List<Video> findAll() {
-        return em.createQuery("select v from Video v", Video.class)
-                .getResultList();
+        return videoJpaRepository.findAll();
     }
 
     public List<Video> findByUserId(Long userId) {
-        return em.createQuery("select v from Video v where v.user.id = :userId", Video.class)
-                .setParameter("userId", userId)
-                .getResultList();
+        return videoJpaRepository.findByUserId(userId);
     }
 
     public List<Video> findByGymId(Long gymId) {
-        return em.createQuery("select v from Video v where v.gym.id = :gymId", Video.class)
-                .setParameter("gymId", gymId)
-                .getResultList();
+        return videoJpaRepository.findByGymId(gymId);
     }
 }

@@ -45,7 +45,8 @@ public class GymApiController {
         }
     }
 
-    @Data class RetrieveGymResponse {
+    @Data
+    class RetrieveGymResponse {
         private Long id;
         private String name;
 

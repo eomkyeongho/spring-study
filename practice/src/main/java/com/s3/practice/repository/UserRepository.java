@@ -2,36 +2,38 @@ package com.s3.practice.repository;
 
 import com.s3.practice.domain.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
 public class UserRepository {
 
-    private final EntityManager em;
+    private final UserJpaRepository userJpaRepository;
 
-    public Long save(User user) {
-        em.persist(user);
-        return user.getId();
+    public void save(User user) {
+        userJpaRepository.save(user);
     }
 
-    public User findOne(Long id) {
-        return em.find(User.class, id);
+    public Optional<User> findOne(Long id) {
+        return userJpaRepository.findById(id);
     }
 
     public List<User> findAll() {
-        return em.createQuery("select u from User u", User.class)
-                .getResultList();
+        return userJpaRepository.findAll();
     }
 
-    public List<User> findByName(String name) {
-        return em.createQuery("select u from User u where u.username = :name", User.class)
-                .setParameter("name", name)
-                .getResultList();
+    public List<User> findByUsername(String Username) {
+        return userJpaRepository.findByUsername(Username);
+    }
+
+    public List<User> findByEmail(String email) {
+        return userJpaRepository.findByEmail(email);
     }
 }
