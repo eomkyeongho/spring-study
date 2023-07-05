@@ -3,6 +3,8 @@ package com.s3.practice.application.service;
 import com.s3.practice.adapter.out.LoadGymPersistenceAdapter;
 import com.s3.practice.adapter.out.UpdateGymPersistenceAdapter;
 import com.s3.practice.application.port.in.GymUseCase;
+import com.s3.practice.application.port.out.LoadGymPort;
+import com.s3.practice.application.port.out.UpdateGymPort;
 import com.s3.practice.domain.Gym;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GymService implements GymUseCase {
 
-    private final UpdateGymPersistenceAdapter ugp;
-    private final LoadGymPersistenceAdapter lgp;
+    private final UpdateGymPort ugp;
+    private final LoadGymPort lgp;
 
     @Override
     @Transactional

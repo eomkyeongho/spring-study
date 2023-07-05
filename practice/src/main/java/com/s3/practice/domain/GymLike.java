@@ -1,12 +1,12 @@
 package com.s3.practice.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor
 public class GymLike {
     @Id @GeneratedValue
     @Column(name = "gym_like_id")
@@ -17,4 +17,10 @@ public class GymLike {
 
     @JoinColumn(name = "gym_id")
     private Long gymId;
+
+    @Builder
+    public GymLike(Long userId, Long gymId) {
+        this.userId = userId;
+        this.gymId = gymId;
+    }
 }

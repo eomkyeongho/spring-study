@@ -21,17 +21,17 @@ public class LoadGymLikePersistenceAdapter implements LoadGymLikePort {
     }
 
     @Override
-    public List<GymLike> findGymLikesByUserIdAndGymId(Long userId, Long gymId) {
+    public List<GymLike> findByUserIdAndGymId(Long userId, Long gymId) {
         return gymLikeJpaRepository.findByUserIdAndGymId(userId, gymId);
     }
 
     @Override
-    public List<GymLike> findGymLikesByUserId(Long userId) {
+    public List<GymLike> findByUserId(Long userId) {
         return gymLikeJpaRepository.findByUserId(userId);
     }
 
     @Override
-    public List<GymLike> findGymLikesByGymId(Long gymId) {
+    public List<GymLike> findByGymId(Long gymId) {
         return gymLikeJpaRepository.findByGymId(gymId);
     }
 }

@@ -16,8 +16,9 @@ public class GymApiController {
 
     @PostMapping("/api/v1/gyms")
     public CreateGymResponse saveGym(@RequestBody @Valid CreateGymRequest request) {
-        Gym gym = new Gym();
-        gym.setName(request.getName());
+        Gym gym = Gym.builder()
+                .name(request.getName())
+                .build();
 
         gymService.register(gym);
 

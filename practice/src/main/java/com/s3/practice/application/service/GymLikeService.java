@@ -3,6 +3,8 @@ package com.s3.practice.application.service;
 import com.s3.practice.adapter.out.LoadGymLikePersistenceAdapter;
 import com.s3.practice.adapter.out.UpdateGymLikePersistenceAdapter;
 import com.s3.practice.application.port.in.GymLikeUseCase;
+import com.s3.practice.application.port.out.LoadGymLikePort;
+import com.s3.practice.application.port.out.UpdateGymLikePort;
 import com.s3.practice.domain.GymLike;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,15 +17,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GymLikeService implements GymLikeUseCase {
 
-    private final LoadGymLikePersistenceAdapter lgp;
-    private final UpdateGymLikePersistenceAdapter ugp;
+    private final UpdateGymLikePort ugp;
+    private final LoadGymLikePort lgp;
 
     @Override
     @Transactional
     public void like(Long userId, Long gymId) {
-        GymLike gymLike = new GymLike();
-        gymLike.setUserId(userId);
-        gymLike.setGymId(gymId);
+        GymLike gymLike = GymLike.builder()
+                .userId(userId)
+                .gymId(gymId)
+                .build();
 
         ugp.save(gymLike);
     }
@@ -31,7 +34,7 @@ public class GymLikeService implements GymLikeUseCase {
     @Override
     @Transactional
     public void unlike(Long userId, Long gymId) {
-        List<GymLike> gymLikes = lgp.findGymLikesByUserIdAndGymId(userId, gymId);
+        List<GymLike> gymLikes = lgp.findByUserIdAndGymId(userId, gymId);
 
         if(gymLikes.isEmpty()) {
             throw new IllegalStateException("좋아요를 누르지 않은 헬스장입니다.");
@@ -41,12 +44,12 @@ public class GymLikeService implements GymLikeUseCase {
     }
 
     @Override
-    public List<GymLike> findGymLikesByUserId(Long userId) {
-        return lgp.findGymLikesByUserId(userId);
+    public List<GymLike> findByUserId(Long userId) {
+        return lgp.findByUserId(userId);
     }
 
     @Override
-    public List<GymLike> findGymLikesByGymId(Long gymId) {
-        return lgp.findGymLikesByGymId(gymId);
+    public List<GymLike> findByGymId(Long gymId) {
+        return lgp.findByGymId(gymId);
     }
 }

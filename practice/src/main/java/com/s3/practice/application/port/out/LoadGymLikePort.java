@@ -8,9 +8,9 @@ import java.util.Optional;
 public interface LoadGymLikePort {
     Optional<GymLike> findById(Long id);
 
-    List<GymLike> findGymLikesByUserIdAndGymId(Long userId, Long gymId);
+    List<GymLike> findByUserIdAndGymId(Long userId, Long gymId);
 
-    List<GymLike> findGymLikesByUserId(Long userId);
+    List<GymLike> findByUserId(Long userId);
 
-    List<GymLike> findGymLikesByGymId(Long gymId);
+    List<GymLike> findByGymId(Long gymId);
 }

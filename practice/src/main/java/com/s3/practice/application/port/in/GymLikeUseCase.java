@@ -10,7 +10,7 @@ public interface GymLikeUseCase {
 
     void unlike(Long userId, Long gymId);
 
-    List<GymLike> findGymLikesByUserId(Long userId);
+    List<GymLike> findByUserId(Long userId);
 
-    List<GymLike> findGymLikesByGymId(Long gymId);
+    List<GymLike> findByGymId(Long gymId);
 }

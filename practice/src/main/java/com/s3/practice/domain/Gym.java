@@ -1,6 +1,8 @@
 package com.s3.practice.domain;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -10,7 +12,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor
 public class Gym {
     @Id @GeneratedValue
     @Column(name = "gym_id")
@@ -22,4 +25,11 @@ public class Gym {
     private float coordinateX;
 
     private float coordinateY;
+
+    @Builder
+    public Gym(String name, float coordinateX, float coordinateY) {
+        this.name = name;
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+    }
 }
